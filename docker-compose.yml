@@ -6,7 +6,7 @@ services:
     container_name: mysql-db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: anything
       MYSQL_DATABASE: lacakio-challange
       MYSQL_USER: lacakiouser
       MYSQL_PASSWORD: lacakiopassword
@@ -14,16 +14,22 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   app:
     build: .
     container_name: spring-boot-app
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/lacakio-challange
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD:
+      SPRING_DATASOURCE_USERNAME: lacakiouser
+      SPRING_DATASOURCE_PASSWORD: lacakiopassword
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_CONFIG_NAME: application-prod
     ports:
