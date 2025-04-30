@@ -1,22 +1,14 @@
-# Importing JDK and copying required files
-FROM openjdk:21-jdk AS build
+# Stage 1: Build using Maven and OpenJDK 21
+FROM maven:3.9.4-openjdk-21 AS build
 WORKDIR /app
 COPY pom.xml .
-COPY src src
+RUN mvn dependency:go-offline -B
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copy Maven wrapper
-COPY mvnw .
-COPY .mvn .mvn
-
-# Set execution permission for the Maven wrapper
-RUN chmod +x ./mvnw
-RUN ./mvnw clean package -DskipTests
-
-# Stage 2: Create the final Docker image using OpenJDK 19
-FROM openjdk:21-jdk
-VOLUME /tmp
-
-# Copy the JAR from the build stage
+# Stage 2: Run with OpenJDK 21 JDK
+FROM openjdk:21-jdk-slim
+WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
 EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
