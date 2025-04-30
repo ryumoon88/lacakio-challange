@@ -6,10 +6,10 @@ services:
     container_name: mysql-db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: lacakio-challange
-      MYSQL_USER: root
-      MYSQL_PASSWORD:
+      MYSQL_USER: lacakiouser
+      MYSQL_PASSWORD: lacakiopassword
     ports:
       - "3306:3306"
     volumes:
