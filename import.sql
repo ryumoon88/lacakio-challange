@@ -27,7 +27,7 @@ INTO TABLE cities
 FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(@id, @name, @ascii, @alt_name, @lat, @long, @feat_class, @feat_code,
+(@id, @name, @ascii, @alt_name, @latitude, @longitude, @feat_class, @feat_code,
  @country, @cc2, @admin1, @admin2, @admin3, @admin4,
  @population, @elevation, @dem, @tz, @modified_at)
 SET
@@ -35,8 +35,8 @@ SET
     name = @name,
     ascii = @ascii,
     alt_name = @alt_name,
-    lat = @lat,
-    `long` = @long,
+    latitude = @lat,
+    `longitude` = @long,
     feat_class = @feat_class,
     feat_code = @feat_code,
     country = @country,
