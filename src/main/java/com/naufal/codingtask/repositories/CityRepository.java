@@ -9,9 +9,5 @@ import java.util.List;
 @Repository
 public interface CityRepository extends CrudRepository<City, String> {
 
-    Iterable<City> findCitiesByNameContainsIgnoreCase(String name);
-
-    List<City> findByNameContainingIgnoreCase(String name);
-
     List<City> findByNameContainingIgnoreCaseOrAltNameContainingIgnoreCase(String name, String altName);
 }

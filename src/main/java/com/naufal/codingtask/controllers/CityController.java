@@ -2,8 +2,6 @@ package com.naufal.codingtask.controllers;
 
 import com.naufal.codingtask.dto.CityDTO;
 import com.naufal.codingtask.dto.SuggestionsWrapper;
-import com.naufal.codingtask.entities.City;
-import com.naufal.codingtask.repositories.CityRepository;
 import com.naufal.codingtask.service.CityService;
 import com.naufal.codingtask.utils.WrapWithKey;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @RestController
 @Tag(name = "City", description = "The City API")
