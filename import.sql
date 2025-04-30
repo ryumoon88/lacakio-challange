@@ -25,6 +25,28 @@ CREATE TABLE `cities` (
 LOAD DATA INFILE '/docker-entrypoint-initdb.d/data.tsv'
 INTO TABLE cities
 FIELDS TERMINATED BY '\t'
-ENCLOSED BY ''
 LINES TERMINATED BY '\n'
-IGNORE 1 LINES;
+IGNORE 1 LINES
+(@id, @name, @ascii, @alt_name, @lat, @long, @feat_class, @feat_code,
+ @country, @cc2, @admin1, @admin2, @admin3, @admin4,
+ @populatio, @elevation, @dem, @tz, @modified_at)
+SET
+    id = @id,
+    name = @name,
+    ascii = @ascii,
+    alt_name = @alt_name,
+    lat = @lat,
+    `long` = @long,
+    feat_class = @feat_class,
+    feat_code = @feat_code,
+    country = @country,
+    cc2 = NULLIF(@cc2, ''),
+    admin1 = NULLIF(@admin1, ''),
+    admin2 = NULLIF(@admin2, ''),
+    admin3 = NULLIF(@admin3, ''),
+    admin4 = NULLIF(@admin4, ''),
+    populatio = NULLIF(@populatio, ''),
+    elevation = NULLIF(@elevation, ''),
+    dem = NULLIF(@dem, ''),
+    tz = @tz,
+    modified_at = NULLIF(@modified_at, '');
