@@ -26,7 +26,7 @@ LOAD DATA INFILE '/docker-entrypoint-initdb.d/data.csv'
 INTO TABLE cities
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
+LINES TERMINATED BY '\r\n'
 IGNORE 1 LINES
 (@id, @name, @ascii, @alt_name, @latitude, @longitude, @feat_class, @feat_code,
  @country, @cc2, @admin1, @admin2, @admin3, @admin4,
