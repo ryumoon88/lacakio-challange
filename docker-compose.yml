@@ -15,6 +15,7 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./import.sql:/docker-entrypoint-initdb.d/import.sql  # Mount the SQL file here
+    command: --secure-file-priv="" --local-infile=1
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
       interval: 10s
