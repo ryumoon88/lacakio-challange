@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: anything
-      MYSQL_DATABASE: lacakio-challange
+      MYSQL_DATABASE: lacakio_challange
       MYSQL_USER: lacakiouser
       MYSQL_PASSWORD: lacakiopassword
     ports:
@@ -28,7 +28,7 @@ services:
       mysql:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/lacakio-challange
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/lacakio_challange
       SPRING_DATASOURCE_USERNAME: lacakiouser
       SPRING_DATASOURCE_PASSWORD: lacakiopassword
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
