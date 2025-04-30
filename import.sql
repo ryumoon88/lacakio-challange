@@ -22,9 +22,9 @@ CREATE TABLE `cities` (
   `modified_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-LOAD DATA INFILE '/docker-entrypoint-initdb.d/data.tsv'
+LOAD DATA INFILE '/docker-entrypoint-initdb.d/data.csv'
 INTO TABLE cities
-FIELDS TERMINATED BY '\t'
+FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (@id, @name, @ascii, @alt_name, @latitude, @longitude, @feat_class, @feat_code,
