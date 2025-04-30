@@ -1,5 +1,6 @@
-LOAD DATA INFILE 'cities_canada-usa.tsv'
+LOAD DATA INFILE '/docker-entrypoint-initdb.d/yourfile.tsv'
 INTO TABLE 'lacakio-challange'
 FIELDS TERMINATED BY '\t'
+ENCLOSED BY ''
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
