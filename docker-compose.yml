@@ -31,7 +31,7 @@ services:
       SPRING_DATASOURCE_USERNAME: lacakiouser
       SPRING_DATASOURCE_PASSWORD: lacakiopassword
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_CONFIG_NAME: application-prod
+      SPRING_PROFILES_ACTIVE: prod
     ports:
       - "80:8080"
 
