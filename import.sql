@@ -1,0 +1,5 @@
+LOAD DATA INFILE 'cities_canada-usa.tsv'
+INTO TABLE 'lacakio-challange'
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
