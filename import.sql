@@ -1,5 +1,5 @@
 LOAD DATA INFILE '/docker-entrypoint-initdb.d/yourfile.tsv'
-INTO TABLE lacakio-challange
+INTO TABLE lacakio_challange
 FIELDS TERMINATED BY '\t'
 ENCLOSED BY ''
 LINES TERMINATED BY '\n'
