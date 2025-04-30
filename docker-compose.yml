@@ -14,6 +14,7 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./cities_canada-usa.tsv:/docker-entrypoint-initdb.d/data.tsv
       - ./import.sql:/docker-entrypoint-initdb.d/import.sql  # Mount the SQL file here
     command: --secure-file-priv="" --local-infile=1
     healthcheck:
